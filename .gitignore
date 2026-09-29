@@ -1,0 +1,8 @@
+# Python 运行产生的缓存，不该进仓库
+__pycache__/
+*.pyc
+*.pyo
+
+# 虚拟环境（将来装 Miniconda / venv 时用得上）
+.venv/
+venv/
