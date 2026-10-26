@@ -1,3 +1,5 @@
-﻿# 当前虚拟环境没有额外第三方依赖。
-# 安装依赖后重新生成为 UTF-8：
-# .\.venv\Scripts\python.exe -m pip freeze | Out-File -Encoding utf8 requirements.txt
+# Direct runtime dependencies for the LCQMC baseline.
+# Python 3.14.6; tested on 2026-10-26.
+numpy==2.5.4
+scikit-learn==1.9.1
+scipy==1.18.1
