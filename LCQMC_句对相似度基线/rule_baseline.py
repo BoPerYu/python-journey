@@ -4,7 +4,9 @@ The baseline deliberately ignores multiplicity and word order. It exists to
 reveal where a hand-written similarity rule fails before introducing a model.
 
 Run from this directory:
-    ..\w5-d1\.venv\Scripts\python.exe -X utf8 rule_baseline.py
+    python -X utf8 rule_baseline.py
+
+This script needs no third-party packages and no data files.
 """
 
 from math import isclose

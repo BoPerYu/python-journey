@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 import random
 
@@ -6,12 +7,26 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, f1_score
 
 
-DATA_DIR = Path(r"D:\Desktop\校\计算机\datasets\LCQMC")
+# 数据目录优先级：环境变量 LCQMC_DATA_DIR > 下面的默认路径。
+# 换一台机器运行时只需设置环境变量，不必改源码。
+DEFAULT_DATA_DIR = Path(r"D:\Desktop\校\计算机\datasets\LCQMC")
+DATA_DIR = Path(os.environ.get("LCQMC_DATA_DIR", str(DEFAULT_DATA_DIR)))
 TRAIN_PATH = DATA_DIR / "train.txt"
 DEV_PATH = DATA_DIR / "dev.txt"
 
 
+def _require_data_file(path):
+    if not path.exists():
+        raise FileNotFoundError(
+            f"找不到数据文件：{path}\n"
+            "请把 train.txt、dev.txt、test.txt 放在同一目录，"
+            "并用环境变量 LCQMC_DATA_DIR 指向该目录。"
+        )
+    return path
+
+
 def load_pairs(path, limit=None, seed=42):
+    _require_data_file(path)
     rows = []
     with path.open("r", encoding="utf-8") as f:
         for line in f:

@@ -121,16 +121,41 @@ macro-F1：0.6950883601
 
 ## 五、运行
 
-运行字符规则基线：
+### 1. 安装依赖
 
-    cd D:\Code\python-journey\LCQMC_句对相似度基线
-    ..\w5-d1\.venv\Scripts\python.exe -X utf8 rule_baseline.py
+    pip install -r requirements.txt
 
-运行机器学习基线：
+### 2. 准备数据
 
-    ..\w5-d1\.venv\Scripts\python.exe -X utf8 ml_baseline.py
+原始数据不随仓库分发，获取方式见文末“数据获取”。把 train.txt、dev.txt、
+test.txt 放在同一个目录，然后用环境变量 LCQMC_DATA_DIR 指向该目录。
 
-切换实验 A / B：
+PowerShell：
+
+    $env:LCQMC_DATA_DIR = "D:\path\to\LCQMC"
+
+cmd：
+
+    set LCQMC_DATA_DIR=D:\path\to\LCQMC
+
+bash：
+
+    export LCQMC_DATA_DIR=/path/to/LCQMC
+
+不设置环境变量时，脚本会退回使用 ml_baseline.py 顶部的 DEFAULT_DATA_DIR。
+该默认值只是作者本机的路径，换机器时请改掉或改用环境变量。
+
+### 3. 运行
+
+在仓库根目录执行：
+
+    cd LCQMC_句对相似度基线
+    python -X utf8 rule_baseline.py
+    python -X utf8 ml_baseline.py
+
+rule_baseline.py 不需要第三方依赖，也不需要数据文件，可以直接运行。
+
+### 4. 切换实验 A / B
 
 实验 A 使用：
 
@@ -185,8 +210,8 @@ macro-F1：0.6950883601
 - 来源：https://github.com/qhduan/CSTS
 - 期望文件：train.txt、dev.txt、test.txt
 - 每行格式：s1<TAB>s2<TAB>label
-- 将文件放在环境变量 LCQMC_DATA_DIR 指定的目录中，
-  或修改脚本顶部 DATA_DIR。
+- 将三个文件放在同一目录，用环境变量 LCQMC_DATA_DIR 指向该目录；
+  不设置时脚本使用 ml_baseline.py 顶部的 DEFAULT_DATA_DIR。
 
 本机核验的 SHA-256：
 train.txt
