@@ -177,3 +177,23 @@ macro-F1：0.6950883601
 3. 对重复句对和标签冲突做更严格的数据审计；
 4. 固定方法后才使用 test；
 5. 将实验配置、指标和限制持续写回本文件。
+
+## 数据获取
+
+原始数据不随本仓库分发，使用公开 LCQMC 数据：
+
+- 来源：https://github.com/qhduan/CSTS
+- 期望文件：train.txt、dev.txt、test.txt
+- 每行格式：s1<TAB>s2<TAB>label
+- 将文件放在环境变量 LCQMC_DATA_DIR 指定的目录中，
+  或修改脚本顶部 DATA_DIR。
+
+本机核验的 SHA-256：
+train.txt
+8D9D196CB8B86E53A6CCB9D2C0682844D973EEBE089590B2C46388A03D63F639
+
+dev.txt
+D3CD41ED89B8F6196A76EBFF2AA03D5ECF42EDCD12942AA865D34F7E570AF7C2
+
+test.txt
+8969F9C16050F40DF9DA6F591443A47BC14C17A504A354EE4CC4AB5B9AA303D9
