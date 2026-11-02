@@ -18,8 +18,8 @@ def character_overlap(sentence1: str, sentence2: str) -> float:
     - Identical non-empty sentences return 1.0.
     - Sentences without a shared character return 0.0.
     """
-    s1=list(sentence1)
-    s2=list(sentence2)
+    s1=set(sentence1)
+    s2=set(sentence2)
     if not s1 or not s2:
         return 0
     tog = s1 & s2
