@@ -1,0 +1,8 @@
+# Direct dependencies for the CPU-only Qwen embedding environment.
+# Python 3.13.14, verified on 2026-11-05.
+torch==2.15.0+cpu
+transformers==5.22.1
+modelscope==1.40.2
+accelerate==1.15.0
+sentence-transformers==6.2.0
+numpy==2.5.4
