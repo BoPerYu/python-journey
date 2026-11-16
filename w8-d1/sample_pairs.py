@@ -24,8 +24,6 @@ class PairRecord:
 
     @property
     def canonical_key(self) -> tuple[str, str]:
-        # TODO: 两句排序后转成 tuple。
-        # 为什么排序？因为 (A, B) 与 (B, A) 属于同一个句对。
         a,b=sorted((self.s1,self.s2))
         return (a,b)
 
@@ -73,9 +71,9 @@ def load_split(path: Path, split: str) -> list[PairRecord]:
         for i,line in enumerate(f,start=1):
             line=line.rstrip('\r\n')
             fields=line.split("\t")
+            s1,s2,label_text=fields
             if len(fields)!=3:
                 raise ValueError(f"第{i}行，字段数不是3")
-            s1,s2,label_text=fields
             label=int(label_text)
             if label not in (0,1):
                 raise ValueError(f"第{i}行，标签错误")

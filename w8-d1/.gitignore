@@ -1,3 +1,3 @@
-artifacts/
+artifacts/run_*.json
 __pycache__/
 *.pyc
