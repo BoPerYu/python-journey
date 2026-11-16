@@ -13,6 +13,7 @@ from typing import TYPE_CHECKING, Any
 from collections.abc import Iterable
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import roc_auc_score
 import numpy as np
 import csv
 
@@ -338,7 +339,23 @@ def compute_metrics(
         false_negative=FN,
         false_positive=FP
     )
-    
+
+
+def compute_roc_auc(
+    labels: list[int],
+    scores: list[float],
+) -> float:
+    """Compute threshold-independent ROC-AUC."""
+    if not labels:
+        raise ValueError("labels 不能为空")
+    if len(labels) != len(scores):
+        raise ValueError("labels 与 scores 长度不一致")
+    if not set(labels) <= {0, 1}:
+        raise ValueError("labels 只能包含 0 和 1")
+    if len(set(labels)) < 2:
+        raise ValueError("ROC-AUC 需要同时包含正类和负类")
+    return float(roc_auc_score(labels, scores))
+
 
 def select_threshold(
     scored_pairs: list[ScoredPair],
@@ -516,6 +533,8 @@ def write_experiment_report(
     qwen_threshold: ThresholdSelection,
     qwen_metrics: Metrics,
     tfidf_metrics: Metrics,
+    qwen_auc: float,
+    tfidf_auc: float,
 ) -> None:
     """Write a concise Markdown report with fixed comparison caveats."""
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -546,14 +565,16 @@ def write_experiment_report(
         "\n"
         "## 结果\n"
         "\n"
-        "| Flow | Accuracy | Macro-F1 | TP | TN | FP | FN |\n"
-        "| --- | ---: | ---: | ---: | ---: | ---: | ---: |\n"
+        "| Flow | Accuracy | Macro-F1 | ROC-AUC | TP | TN | FP | FN |\n"
+        "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n"
         f"| Qwen + threshold | {qwen_metrics.accuracy:.6f} | "
-        f"{qwen_metrics.macro_f1:.6f} | {qwen_metrics.true_positive} | "
+        f"{qwen_metrics.macro_f1:.6f} | {qwen_auc:.6f} | "
+        f"{qwen_metrics.true_positive} | "
         f"{qwen_metrics.true_negative} | {qwen_metrics.false_positive} | "
         f"{qwen_metrics.false_negative} |\n"
         f"| TF-IDF + LR | {tfidf_metrics.accuracy:.6f} | "
-        f"{tfidf_metrics.macro_f1:.6f} | {tfidf_metrics.true_positive} | "
+        f"{tfidf_metrics.macro_f1:.6f} | {tfidf_auc:.6f} | "
+        f"{tfidf_metrics.true_positive} | "
         f"{tfidf_metrics.true_negative} | {tfidf_metrics.false_positive} | "
         f"{tfidf_metrics.false_negative} |\n"
         "\n"
@@ -622,6 +643,10 @@ def main() -> int:
         [item.record.label for item in dev_scores],
         qwen_predictions,
     )
+    qwen_auc = compute_roc_auc(
+        [item.record.label for item in dev_scores],
+        [item.score for item in dev_scores],
+    )
 
     vectorizer, classifier = train_tfidf_baseline(fit_pool)
     tfidf_predictions, tfidf_probabilities = predict_tfidf(
@@ -630,6 +655,10 @@ def main() -> int:
     tfidf_metrics = compute_metrics(
         [record.label for record in dev_pool],
         tfidf_predictions,
+    )
+    tfidf_auc = compute_roc_auc(
+        [record.label for record in dev_pool],
+        tfidf_probabilities,
     )
 
     config.output_dir.mkdir(parents=True, exist_ok=True)
@@ -657,6 +686,7 @@ def main() -> int:
                 "model",
                 "accuracy",
                 "macro_f1",
+                "roc_auc",
                 "true_positive",
                 "true_negative",
                 "false_positive",
@@ -664,15 +694,16 @@ def main() -> int:
             ],
         )
         writer.writeheader()
-        for model_name, metrics in (
-            ("qwen_threshold", qwen_metrics),
-            ("tfidf_lr", tfidf_metrics),
+        for model_name, metrics, roc_auc in (
+            ("qwen_threshold", qwen_metrics, qwen_auc),
+            ("tfidf_lr", tfidf_metrics, tfidf_auc),
         ):
             writer.writerow(
                 {
                     "model": model_name,
                     "accuracy": metrics.accuracy,
                     "macro_f1": metrics.macro_f1,
+                    "roc_auc": roc_auc,
                     "true_positive": metrics.true_positive,
                     "true_negative": metrics.true_negative,
                     "false_positive": metrics.false_positive,
@@ -685,6 +716,8 @@ def main() -> int:
         {
             "qwen": qwen_metrics.__dict__,
             "tfidf": tfidf_metrics.__dict__,
+            "qwen_auc": qwen_auc,
+            "tfidf_auc": tfidf_auc,
             "qwen_threshold": threshold_selection.threshold,
             "qwen_threshold_macro_f1":
                 threshold_selection.threshold_metrics.macro_f1,
@@ -718,6 +751,8 @@ def main() -> int:
         threshold_selection,
         qwen_metrics,
         tfidf_metrics,
+        qwen_auc,
+        tfidf_auc,
     )
 
     print("fit records:", len(fit_pool))
@@ -727,6 +762,8 @@ def main() -> int:
     print("threshold:", threshold_selection.threshold)
     print("qwen metrics:", qwen_metrics)
     print("tfidf metrics:", tfidf_metrics)
+    print("qwen auc:", qwen_auc)
+    print("tfidf auc:", tfidf_auc)
     print("output:", config.output_dir)
     return 0
 

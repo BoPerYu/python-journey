@@ -17,10 +17,10 @@ qwen_compare.py
 
 2026-11-16 固定 seed=42 的 500 对结果：
 
-| 模型 | Accuracy | Macro-F1 | FP | FN |
-| --- | ---: | ---: | ---: | ---: |
-| Qwen + threshold | 0.7720 | 0.7720 | 87 | 27 |
-| TF-IDF + LR | 0.5900 | 0.5806 | 93 | 112 |
+| 模型 | Accuracy | Macro-F1 | ROC-AUC | FP | FN |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Qwen + threshold | 0.7720 | 0.7720 | 0.8798 | 87 | 27 |
+| TF-IDF + LR | 0.5900 | 0.5806 | 0.5974 | 93 | 112 |
 
 Qwen 阈值只在 2,000 条 train threshold 样本上选择，固定为
 `0.824390411377`。dev 500 只用于最终评估，test 未使用。
