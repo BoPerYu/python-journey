@@ -1,0 +1,338 @@
+{
+  "schema": 1,
+  "scope": "smoke_only_train20_dev20_from_used_fixed_dev500",
+  "selection": {
+    "train": "10_per_label_from_W8_threshold2000_fit20000_seed42",
+    "dev": "first20_in_W8_fixed_dev500_manifest"
+  },
+  "source_hashes": {
+    "train.txt": "8d9d196cb8b86e53a6ccb9d2c0682844d973eebe089590b2c46388a03d63f639",
+    "dev.txt": "d3cd41ed89b8f6196a76ebff2aa03d5ecf42edcd12942aa865d34f7e570af7c2",
+    "fixed_dev500_manifest": "b0d872ef99f7265bae4ad2393f0452f671b7bd5283be9ab1c29f60204442afd7"
+  },
+  "threshold_pool_ids_sha256": "f08e7582360ad5d42146f25537f7fde8c673c05b631172467ff6deed8a9746d9",
+  "train": [
+    {
+      "pair_id": "train:000190",
+      "split": "train",
+      "line_number": 190,
+      "s1": "怎么修改百度知道的用户名？",
+      "s2": "百度知道要怎么改用户名？",
+      "label": 1
+    },
+    {
+      "pair_id": "train:000093",
+      "split": "train",
+      "line_number": 93,
+      "s1": "如没有其他的问题小二这边就不打扰您了",
+      "s2": "好的，请问需要帮您一并清空安保问题的吗？",
+      "label": 0
+    },
+    {
+      "pair_id": "train:000455",
+      "split": "train",
+      "line_number": 455,
+      "s1": "上海面积多大？",
+      "s2": "上海到底多大d?",
+      "label": 1
+    },
+    {
+      "pair_id": "train:001552",
+      "split": "train",
+      "line_number": 1552,
+      "s1": "计算机一级证书对学生有用吗？它有没有有效期？",
+      "s2": "计算机省一级证书对找工作有用吗？",
+      "label": 0
+    },
+    {
+      "pair_id": "train:000899",
+      "split": "train",
+      "line_number": 899,
+      "s1": "今年几号开始春运",
+      "s2": "今年几号春运开始",
+      "label": 1
+    },
+    {
+      "pair_id": "train:001660",
+      "split": "train",
+      "line_number": 1660,
+      "s1": "请问有人能帮我把红底照片ps成蓝底么？急用谢谢",
+      "s2": "能不能把蓝底照片帮我改成红底的呀？",
+      "label": 0
+    },
+    {
+      "pair_id": "train:001010",
+      "split": "train",
+      "line_number": 1010,
+      "s1": "三星手机在哪里买？",
+      "s2": "三星手机好在哪里？",
+      "label": 1
+    },
+    {
+      "pair_id": "train:001670",
+      "split": "train",
+      "line_number": 1670,
+      "s1": "求网游小说，那种帮战少的，女生看",
+      "s2": "求主角长得比女生漂亮的网游小说。",
+      "label": 0
+    },
+    {
+      "pair_id": "train:001225",
+      "split": "train",
+      "line_number": 1225,
+      "s1": "怎么赚更多的财富值",
+      "s2": "怎样可以刷财富值",
+      "label": 1
+    },
+    {
+      "pair_id": "train:001781",
+      "split": "train",
+      "line_number": 1781,
+      "s1": "麻烦您提供一下到账银行卡后四位的，小二帮您核实一下的",
+      "s2": "为了准确核对信息，麻烦您提供下金额　和　收款银行卡的名称　给我下哦！",
+      "label": 0
+    },
+    {
+      "pair_id": "train:001246",
+      "split": "train",
+      "line_number": 1246,
+      "s1": "寒假新时空六年级上数学答案",
+      "s2": "六年级寒假新时空数学答案",
+      "label": 1
+    },
+    {
+      "pair_id": "train:001907",
+      "split": "train",
+      "line_number": 1907,
+      "s1": "欲钱买无精打采的动物是什么生肖",
+      "s2": "欲钱买短命的生肖指的是什么？",
+      "label": 0
+    },
+    {
+      "pair_id": "train:001492",
+      "split": "train",
+      "line_number": 1492,
+      "s1": "生肖年是指新历还是农历？",
+      "s2": "生肖算农历还是新历",
+      "label": 1
+    },
+    {
+      "pair_id": "train:002244",
+      "split": "train",
+      "line_number": 2244,
+      "s1": "专制下的启蒙是什么意思？",
+      "s2": "启蒙的意思是什么？",
+      "label": 0
+    },
+    {
+      "pair_id": "train:002278",
+      "split": "train",
+      "line_number": 2278,
+      "s1": "怎么画眼线显得眼睛大",
+      "s2": "怎么画眼线让眼睛看起来更大。",
+      "label": 1
+    },
+    {
+      "pair_id": "train:002437",
+      "split": "train",
+      "line_number": 2437,
+      "s1": "你最想吃的早餐是什么",
+      "s2": "早餐吃什么？",
+      "label": 0
+    },
+    {
+      "pair_id": "train:002534",
+      "split": "train",
+      "line_number": 2534,
+      "s1": "求香港一部恐怖片",
+      "s2": "求一部香港恐怖片",
+      "label": 1
+    },
+    {
+      "pair_id": "train:002740",
+      "split": "train",
+      "line_number": 2740,
+      "s1": "卡西欧手表怎样",
+      "s2": "卡西欧手表怎么戴",
+      "label": 0
+    },
+    {
+      "pair_id": "train:002687",
+      "split": "train",
+      "line_number": 2687,
+      "s1": "过年了作文怎么写啊",
+      "s2": "作文是过年怎么写",
+      "label": 1
+    },
+    {
+      "pair_id": "train:003077",
+      "split": "train",
+      "line_number": 3077,
+      "s1": "文本稿是什么意思",
+      "s2": "白文本是什么意思",
+      "label": 0
+    }
+  ],
+  "dev_diagnostic": [
+    {
+      "label": 0,
+      "line_number": 7,
+      "pair_id": "dev:000007",
+      "s1": "什么牌子的空调最好！",
+      "s2": "什么牌子的空调扇最好",
+      "split": "dev"
+    },
+    {
+      "label": 1,
+      "line_number": 10,
+      "pair_id": "dev:000010",
+      "s1": "手机微信内容可以同步到电脑上吗",
+      "s2": "电脑微信和手机微信可以同步吗",
+      "split": "dev"
+    },
+    {
+      "label": 0,
+      "line_number": 28,
+      "pair_id": "dev:000028",
+      "s1": "三星手机屏幕是不是最好的？",
+      "s2": "三星手机的屏幕是不是都很好",
+      "split": "dev"
+    },
+    {
+      "label": 1,
+      "line_number": 36,
+      "pair_id": "dev:000036",
+      "s1": "初二地理生物会考难吗？",
+      "s2": "初二生物地理会考会很难吗",
+      "split": "dev"
+    },
+    {
+      "label": 0,
+      "line_number": 55,
+      "pair_id": "dev:000055",
+      "s1": "梦见自己生病死了",
+      "s2": "梦见自己生病。",
+      "split": "dev"
+    },
+    {
+      "label": 1,
+      "line_number": 60,
+      "pair_id": "dev:000060",
+      "s1": "现在学家电维修到底有前途吗?",
+      "s2": "现在学家电维修前途吗？",
+      "split": "dev"
+    },
+    {
+      "label": 0,
+      "line_number": 92,
+      "pair_id": "dev:000092",
+      "s1": "形容非常多的成语",
+      "s2": "形容水非常大的成语",
+      "split": "dev"
+    },
+    {
+      "label": 0,
+      "line_number": 98,
+      "pair_id": "dev:000098",
+      "s1": "什么是百度知道所不知道的？",
+      "s2": "百度知道为什么什么都知道呢？",
+      "split": "dev"
+    },
+    {
+      "label": 1,
+      "line_number": 109,
+      "pair_id": "dev:000109",
+      "s1": "医学伦理学之案例分析，各位大侠赏脸指教下咯！",
+      "s2": "案例分析，医学伦理学…很急…",
+      "split": "dev"
+    },
+    {
+      "label": 0,
+      "line_number": 120,
+      "pair_id": "dev:000120",
+      "s1": "林正英电影有哪些",
+      "s2": "林正英有一不电影",
+      "split": "dev"
+    },
+    {
+      "label": 0,
+      "line_number": 133,
+      "pair_id": "dev:000133",
+      "s1": "梦见自己的舌头烂了什么意思？",
+      "s2": "梦见自己被虾吃了，代表什么？",
+      "split": "dev"
+    },
+    {
+      "label": 1,
+      "line_number": 158,
+      "pair_id": "dev:000158",
+      "s1": "现在学电脑维修行业有前途吗？",
+      "s2": "现在学维修电脑有前途吗？",
+      "split": "dev"
+    },
+    {
+      "label": 0,
+      "line_number": 164,
+      "pair_id": "dev:000164",
+      "s1": "谁有总裁言情小说？",
+      "s2": "谁的总裁言情小说写的黄",
+      "split": "dev"
+    },
+    {
+      "label": 1,
+      "line_number": 196,
+      "pair_id": "dev:000196",
+      "s1": "为什么冬天下雪不打雷？",
+      "s2": "冬天下雪为什么不打雷",
+      "split": "dev"
+    },
+    {
+      "label": 1,
+      "line_number": 254,
+      "pair_id": "dev:000254",
+      "s1": "求米虫的春天未删节版~",
+      "s2": "米虫的春天未删节版全文",
+      "split": "dev"
+    },
+    {
+      "label": 1,
+      "line_number": 333,
+      "pair_id": "dev:000333",
+      "s1": "海上明月共潮升的上一句是什么",
+      "s2": "海上明月共潮声上一句是什么？",
+      "split": "dev"
+    },
+    {
+      "label": 0,
+      "line_number": 334,
+      "pair_id": "dev:000334",
+      "s1": "怎么下载天天酷跑全新版本",
+      "s2": "天天酷跑最新版本外挂下载",
+      "split": "dev"
+    },
+    {
+      "label": 0,
+      "line_number": 360,
+      "pair_id": "dev:000360",
+      "s1": "什么样的头发好看图片",
+      "s2": "什么样的手指好看图片",
+      "split": "dev"
+    },
+    {
+      "label": 0,
+      "line_number": 404,
+      "pair_id": "dev:000404",
+      "s1": "搜狗拼音输入法不能在贴吧上用吗",
+      "s2": "暖宝宝贴贴在哪最暖和",
+      "split": "dev"
+    },
+    {
+      "label": 1,
+      "line_number": 417,
+      "pair_id": "dev:000417",
+      "s1": "今年冬季最流行什么款式的衣服？",
+      "s2": "今年冬季最流行什么款式的服装",
+      "split": "dev"
+    }
+  ]
+}

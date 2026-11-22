@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "split": "train",
+  "source": "D:\\Desktop\\校\\计算机\\datasets\\LCQMC\\train.txt",
+  "source_sha256": "8d9d196cb8b86e53a6ccb9d2c0682844d973eebe089590b2c46388a03d63f639",
+  "selection": "first_two_unique_pairs_per_label_interleaved_1_0",
+  "samples": [
+    {
+      "pair_id": "train:000000",
+      "source_line": 1,
+      "text_a": "喜欢打篮球的男生喜欢什么样的女生",
+      "text_b": "爱打篮球的男生喜欢什么样的女生",
+      "label": 1
+    },
+    {
+      "pair_id": "train:000002",
+      "source_line": 3,
+      "text_a": "大家觉得她好看吗",
+      "text_b": "大家觉得跑男好看吗？",
+      "label": 0
+    },
+    {
+      "pair_id": "train:000001",
+      "source_line": 2,
+      "text_a": "我手机丢了，我想换个手机",
+      "text_b": "我想买个新手机，求推荐",
+      "label": 1
+    },
+    {
+      "pair_id": "train:000004",
+      "source_line": 5,
+      "text_a": "晚上睡觉带着耳机听音乐有什么害处吗？",
+      "text_b": "孕妇可以戴耳机听音乐吗?",
+      "label": 0
+    }
+  ]
+}
